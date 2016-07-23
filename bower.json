@@ -1,0 +1,22 @@
+{
+  "name": "half_edge",
+  "authors": [
+    "daniel-martins <daniel.amaralm@gmail.com>"
+  ],
+  "description": "Trabalho de Half-Edge para a disciplina Computação Gráfica, ministrada pelo professor Toledo, no DCC/UFRJ",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "bootstrap": "^3.3.6"
+  }
+}
