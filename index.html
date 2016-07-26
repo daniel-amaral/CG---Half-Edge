@@ -27,11 +27,30 @@
 			</div>
 			<div class="col-md-12 row">
 				<div class="col-md-1"></div>
-				<div class="col-md-10" style="height: 100px;">
+				<div class="col-md-10">
 					<svg width="100%" height="500" viewBox="0 0 1000 1000">
 						<rect x="100" y="200" width="200" height="150"></rect>
+
+						<g ng-repeat="t in triangles">
+							<polygon class="triangulo" points="{{t.v1.x}},{{t.v1.y}}
+											 {{t.v2.x}},{{t.v2.y}}
+											 {{t.v3.x}},{{t.v3.y}}" 
+									 ng-click="click(t)"
+									 ng-class="{'verde': t.verde}" />
+						</g>
+
+						<g ng-repeat="l in lines">
+
+						</g>
 					</svg>
 				</div>
+				<div class="col-md-1"></div>
+			</div>
+			<br>
+			<div class="col-md-12">
+				<span>Info:<br>
+					<strong>{{info}}</strong>
+				</span>
 			</div>
 			
 			

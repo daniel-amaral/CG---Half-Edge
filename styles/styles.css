@@ -5,3 +5,14 @@
 svg {
 	border: 2px solid #000;
 }
+
+.triangulo {
+	fill: red;
+	stroke: #000;
+	stroke-width: 1px;
+	cursor: pointer;
+}
+
+.verde {
+	fill: green;
+}
