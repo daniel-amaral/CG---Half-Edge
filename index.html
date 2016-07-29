@@ -21,36 +21,85 @@
 	</head>
 	<body ng-app="app" ng-controller="Controller">
 		<div class="row">
-			<div class="col-md-12">
-				<h1>Computação Gráfica</h1>
+			<div class="col-md-4">
+				<h1 ng-click="printTriangles()">Computação Gráfica</h1>
 				<h4 style="margin-top: -5px;"><i>Half-Edge</i></h4>
+			</div>
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-4" style="margin: 10px 0;">
+				<h4>Selecione arquivo de input:</h3>
+				<input type="file" on-read-file="loadData($fileContent)" />
+				<!-- <div ng-if="content">
+					<h5>Arquivo:</h5>
+					<pre>{{ content }}</pre>
+				</div> -->
 			</div>
 			<div class="col-md-12 row">
 				<div class="col-md-1"></div>
 				<div class="col-md-10">
-					<svg width="100%" height="500" viewBox="0 0 1000 1000">
-						<rect x="100" y="200" width="200" height="150"></rect>
-
-						<g ng-repeat="t in triangles">
+					<!-- <svg width="100%" height="500" viewBox="0 0 1080 500" ng-click="clickOnScreen($event)"> -->
+					<svg width="100%" height="500" viewBox="0 0 1080 500">
+						<!-- <g ng-repeat="t in triangles">
 							<polygon class="triangulo" points="{{t.v1.x}},{{t.v1.y}}
 											 {{t.v2.x}},{{t.v2.y}}
 											 {{t.v3.x}},{{t.v3.y}}" 
 									 ng-click="click(t)"
-									 ng-class="{'verde': t.active}" />
+									 ng-class="{'vermelho': t.active}" />
+						</g> -->
+
+						<g ng-repeat="f in listOfFaces">
+							<polygon class="triangulo"
+								points="{{f.triangle.v1.x}},{{f.triangle.v1.y}}
+										{{f.triangle.v2.x}},{{f.triangle.v2.y}}
+										{{f.triangle.v3.x}},{{f.triangle.v3.y}}" 
+									 ng-click="click(f)"
+									 ng-class="{'vermelho': f.active}" />
 						</g>
 
-						<g ng-repeat="l in lines">
-
+						<g ng-repeat="he in listOfHalfEdgesToDraw">
+							<line x1="{{he.vert.x}}" y1="{{he.vert.y}}" x2="{{he.next.vert.x}}" y2="{{he.next.vert.y}}"
+							  ng-class="{'active': he.active}" ng-click="click(he)" />
 						</g>
+
+						<g ng-repeat="v in listOfVerts">
+							<circle cx="{{v.x}}" cy="{{v.y}}" r="4" ng-class="{'active': v.active}" ng-click="click(v)"/>
+						</g>
+
+
+						<!-- <g ng-repeat="t in triangles">
+							<circle cx="{{t.v1.x}}" cy="{{t.v1.y}}" r="4" fill="#000"/>
+							<circle cx="{{t.v2.x}}" cy="{{t.v2.y}}" r="4" fill="#000"/>
+							<circle cx="{{t.v3.x}}" cy="{{t.v3.y}}" r="4" fill="#000"/>
+						</g> -->
+						<!-- <g ng-repeat="p in points">
+							<circle cx="{p.x}}" cy="{{p.y}}" r="5" fill="#000" ng-click="clickOnPoint(p)"/>
+						</g> -->
 					</svg>
 				</div>
 				<div class="col-md-1"></div>
 			</div>
 			<br>
-			<div class="col-md-12">
-				<span>Info:<br>
-					<strong>{{info}}</strong>
+			<div class="col-md-4">
+					<strong >{{infoOne}}</strong>
+					<br>
+					<strong >{{infoTwo}}</strong>
+					<br>
+					<strong >{{infoThree}}</strong>
+					<br>
+					<strong >{{infoFour}}</strong>
+					<br>
+					<strong >{{infoFive}}</strong>
+					<br>
 				</span>
+			</div>
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-4" style="padding-left: 140px;">
+				<strong>Number of faces: {{listOfFaces.length}}</strong><br>
+				<strong>Number of edges: {{listOfHalfEdgesToDraw.length}}</strong><br>
+				<strong>Number of half-edges: {{listOfHalfEdges.length}}</strong><br>
+				<strong>Number of vertices: {{listOfVerts.length}}</strong>
 			</div>
 			
 			
